@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#173f35" />
+  <title>CampusLoop — Lost & Found</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="CampusLoop home">
+        <span class="brand-mark">↗</span>
+        <span><strong>campusloop</strong><small>LOST & FOUND</small></span>
+      </a>
+      <div class="campus-pill"><span class="status-dot"></span> Campus community</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="all"><span class="nav-icon">▦</span> All items <span class="nav-count" id="nav-all-count">0</span></button>
+        <button class="nav-item" data-view="lost"><span class="nav-icon">⌕</span> Lost items <span class="nav-count" id="nav-lost-count">0</span></button>
+        <button class="nav-item" data-view="found"><span class="nav-icon">✓</span> Found items <span class="nav-count" id="nav-found-count">0</span></button>
+        <button class="nav-item" data-view="claims"><span class="nav-icon">♡</span> My claims <span class="nav-count" id="nav-claims-count">0</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-icon">✳</span><strong>Found something?</strong><p>A small report can help reunite someone with what matters.</p><button id="sidebar-report" class="text-button">Post a found item <span>→</span></button></div>
+        <div class="sidebar-foot">A student-made campus prototype<br><span>Keep it kind. Keep it safe.</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="top">
+      <header class="topbar">
+        <div class="breadcrumb">Campus community <span>/</span> <strong id="breadcrumb-current">All items</strong></div>
+        <div class="topbar-actions"><span class="demo-badge"><span></span> DEMO MODE</span><button class="avatar" title="Demo profile" aria-label="Demo profile">CL</button></div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> A little help goes a long way</div>
+          <h1>Lost something?<br /><em>Let's bring it home.</em></h1>
+          <p class="hero-subtitle">A shared space for the things that go missing — and the people who help them find their way back.</p>
+          <div class="hero-actions"><button class="button button-primary" id="hero-report-lost"><span>＋</span> Report lost item</button><button class="button button-light" id="hero-report-found">I found something <span>↗</span></button></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-sun"></div><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-card card-back"><span class="tiny-label">FOUND</span><div class="mini-shape"></div><div class="mini-lines"></div></div>
+          <div class="art-card card-front"><span class="card-spark">✳</span><div class="key-ring"><div class="key-head"></div><div class="key-stem"></div><div class="key-tooth"></div></div><div class="card-label">little things,<br/><strong>big relief.</strong></div></div>
+          <div class="art-star star-a">✳</div><div class="art-star star-b">✦</div><div class="art-caption">GOOD THINGS FIND THEIR WAY</div>
+        </div>
+        <div class="hero-bottom-note"><span>✳</span> Community-powered. Campus-focused. Always a little more human.</div>
+      </section>
+
+      <section class="stats-row" aria-label="Item summary">
+        <div class="stat-card"><span class="stat-icon icon-green">▦</span><div><span class="stat-label">TOTAL LISTINGS</span><strong id="stat-total">0</strong></div><span class="stat-note">on the board</span></div>
+        <div class="stat-card"><span class="stat-icon icon-amber">⌕</span><div><span class="stat-label">LOST ITEMS</span><strong id="stat-lost">0</strong></div><span class="stat-note">waiting to return</span></div>
+        <div class="stat-card"><span class="stat-icon icon-blue">✓</span><div><span class="stat-label">FOUND ITEMS</span><strong id="stat-found">0</strong></div><span class="stat-note">ready for a reunion</span></div>
+        <div class="stat-card"><span class="stat-icon icon-pink">♡</span><div><span class="stat-label">REUNITED</span><strong id="stat-resolved">0</strong></div><span class="stat-note">happy endings</span></div>
+      </section>
+
+      <section class="board-section" id="board">
+        <div class="section-heading"><div><div class="eyebrow small-eyebrow">THE COMMUNITY BOARD</div><h2 id="board-title">Recently posted</h2><p id="board-description">Browse the latest lost and found listings around campus.</p></div><button class="button button-outline" id="board-report"><span>＋</span> Create listing</button></div>
+        <div class="toolbar"><label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Search items, places, keywords..." aria-label="Search listings" /><kbd>⌘ K</kbd></label><div class="filter-controls"><select id="category-filter" aria-label="Filter by category"><option value="all">All categories</option><option>Electronics</option><option>Accessories</option><option>Cards & IDs</option><option>Books & Notes</option><option>Clothing</option><option>Keys</option><option>Other</option></select><select id="sort-filter" aria-label="Sort listings"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></div></div>
+        <div class="active-filters"><span id="results-label">Showing all listings</span><button id="clear-filters" class="clear-button">Clear filters ×</button></div>
+        <div class="item-grid" id="item-grid" aria-live="polite"></div>
+        <div class="empty-state hidden" id="empty-state"><div class="empty-illustration">⌕</div><h3>No listings found</h3><p>Try another search, or create a listing to help the community.</p><button class="button button-primary" id="empty-create">Create a listing</button></div>
+      </section>
+      <footer class="page-footer"><span>campusloop <span class="footer-dot">✳</span> made for campus, by campus</span><span>Prototype • Sample data only • No messages are sent</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="listing-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card"><div class="modal-head"><div><div class="eyebrow small-eyebrow">ADD TO THE COMMUNITY BOARD</div><h2 id="modal-title">Create a listing</h2><p>Share just enough detail to help the right person recognise it.</p></div><button class="icon-button" data-close="listing-modal" aria-label="Close dialog">×</button></div>
+      <form id="listing-form">
+        <div class="form-row two-cols"><label>Listing type <select id="item-type" required><option value="lost">I lost something</option><option value="found">I found something</option></select></label><label>Category <select id="item-category" required><option>Electronics</option><option>Accessories</option><option>Cards & IDs</option><option>Books & Notes</option><option>Clothing</option><option>Keys</option><option>Other</option></select></label></div>
+        <label>Item name <input id="item-name" required maxlength="70" placeholder="e.g. Black water bottle" /></label>
+        <label>Where was it lost or found? <input id="item-location" required maxlength="90" placeholder="e.g. Library, second floor" /></label>
+        <div class="form-row two-cols"><label>Date <input id="item-date" type="date" required /></label><label>Colour (optional) <input id="item-color" maxlength="35" placeholder="e.g. Navy blue" /></label></div>
+        <label>Description <textarea id="item-description" rows="3" maxlength="280" placeholder="Distinctive details that could help identify the item..."></textarea><span class="field-hint">Please don't include passwords, ID numbers, phone numbers, or other sensitive details.</span></label>
+        <div class="form-actions"><button type="button" class="button button-light" data-close="listing-modal">Cancel</button><button type="submit" class="button button-primary">Publish listing <span>→</span></button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title"><div class="modal-card detail-modal-card"><div class="modal-head"><div><div class="eyebrow small-eyebrow" id="detail-eyebrow">LISTING DETAILS</div><h2 id="detail-title">Item details</h2></div><button class="icon-button" data-close="detail-modal" aria-label="Close dialog">×</button></div><div id="detail-content"></div></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
